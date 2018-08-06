@@ -24,6 +24,15 @@ a {
   text-decoration: none;
 }
 
+ol, li {
+  color: transparent;
+}
+
+h2 {
+  color: #000;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
 /* -------------------------------- 
 
 Main Components 
@@ -49,7 +58,7 @@ Main Components
   position: relative;
   height: 100px;
   width: 90%;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 .cd-horizontal-timeline .events-wrapper {
@@ -69,13 +78,13 @@ Main Components
 }
 .cd-horizontal-timeline .events-wrapper::before {
   left: 0;
-  background-image: -webkit-linear-gradient( left , #f8f8f8, rgba(248, 248, 248, 0));
-  background-image: linear-gradient(to right, #f8f8f8, rgba(248, 248, 248, 0));
+  /* background-image: -webkit-linear-gradient( left , #f8f8f8, rgba(248, 248, 248, 0));
+  background-image: linear-gradient(to right, #f8f8f8, rgba(248, 248, 248, 0)); */
 }
 .cd-horizontal-timeline .events-wrapper::after {
   right: 0;
-  background-image: -webkit-linear-gradient( right , #f8f8f8, rgba(248, 248, 248, 0));
-  background-image: linear-gradient(to left, #f8f8f8, rgba(248, 248, 248, 0));
+  /* background-image: -webkit-linear-gradient( right , #f8f8f8, rgba(248, 248, 248, 0));
+  background-image: linear-gradient(to left, #f8f8f8, rgba(248, 248, 248, 0)); */
 }
 .cd-horizontal-timeline .events {
   /* this is the grey line/timeline */
@@ -294,13 +303,13 @@ Main Components
   animation-direction: reverse;
 }
 .cd-horizontal-timeline .events-content li > * {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 .cd-horizontal-timeline .events-content h2 {
   font-weight: bold;
   font-size: 2.6rem;
-  font-family: "Playfair Display", serif;
+  /* font-family: "Playfair Display", serif; */
   font-weight: 700;
   line-height: 1.2;
 }
