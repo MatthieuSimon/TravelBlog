@@ -1,5 +1,6 @@
 
 import { Component, OnInit  } from '@angular/core';
+import { ArticleService } from '../services/article.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -8,6 +9,22 @@ import * as $ from 'jquery';
   styleUrls: ['./horizontal-timeline.component.css']
 })
 export class HorizontalTimelineComponent implements OnInit {
+
+    articles: any = [];
+    dates: any = [];
+
+    constructor(public articleService: ArticleService) {
+      this.articleService.getArticles().subscribe((data: any[]) =>{
+        this.articles = data;
+        console.log(data);
+        this.dates = data.map((d) => d.date);
+      });
+    }
+
+
+
+
+
 
   public ngOnInit()
   {
@@ -69,7 +86,7 @@ export class HorizontalTimelineComponent implements OnInit {
                 });
     
                 //keyboard navigation
-                $(document).keyup(function(event){
+                $(document).keyup(function(event: any){
                     if(event.which === '37' && elementInViewport(timeline.get(0)) ) {
                         showNewContent(timelineComponents, timelineTotWidth, 'prev');
                     } else if( event.which == '39' && elementInViewport(timeline.get(0))) {
@@ -112,7 +129,7 @@ export class HorizontalTimelineComponent implements OnInit {
             var eventStyle = window.getComputedStyle(event.get(0), null),
                 eventLeft = Number(eventStyle.getPropertyValue("left").replace('px', '')),
                 timelineWidth = Number(timelineComponents['timelineWrapper'].css('width').replace('px', '')),
-                timelineTotWidth = Number(timelineComponents['eventsWrapper'].css('width').replace('px', ''));
+                timelineTotWidth: any = Number(timelineComponents['eventsWrapper'].css('width').replace('px', ''));
             var timelineTranslate = getTranslateValue(timelineComponents['eventsWrapper']);
     
             if( (string == 'next' && eventLeft > timelineWidth - timelineTranslate) || (string == 'prev' && eventLeft < - timelineTranslate) ) {
@@ -133,7 +150,7 @@ export class HorizontalTimelineComponent implements OnInit {
         function updateFilling(selectedEvent, filling, totWidth) {
             //change .filling-line length according to the selected event
             var eventStyle = window.getComputedStyle(selectedEvent.get(0), null),
-                eventLeft = eventStyle.getPropertyValue("left"),
+                eventLeft: any = eventStyle.getPropertyValue("left"),
                 eventWidth = eventStyle.getPropertyValue("width");
             eventLeft = Number(eventLeft.replace('px', '')) + Number(eventWidth.replace('px', ''))/2;
             var scaleValue = eventLeft/totWidth;
@@ -149,21 +166,24 @@ export class HorizontalTimelineComponent implements OnInit {
         }
     
         function setTimelineWidth(timelineComponents, width) {
+            var last = timelineComponents['timelineDates'].length;
             var timeSpan = daydiff(timelineComponents['timelineDates'][0], timelineComponents['timelineDates'][timelineComponents['timelineDates'].length-1]),
                 timeSpanNorm = timeSpan/timelineComponents['eventsMinLapse'],
                 timeSpanNorm = Math.round(timeSpanNorm) + 4,
-                totalWidth = timeSpanNorm*width;
+                // totalWidth = timeSpanNorm*width;
+                totalWidth = 800;
             timelineComponents['eventsWrapper'].css('width', totalWidth+'px');
-            updateFilling(timelineComponents['timelineEvents'].eq(0), timelineComponents['fillingLine'], totalWidth);
+            updateFilling(timelineComponents['timelineEvents'].eq(last-1), timelineComponents['fillingLine'], totalWidth);
         
             return totalWidth;
         }
     
         function updateVisibleContent(event, eventsContent) {
-            var eventDate = event.data('date'),
+            var eventDate = event[0].rel,
                 visibleContent = eventsContent.find('.selected'),
-                selectedContent = eventsContent.find('[data-date="'+ eventDate +'"]'),
-                selectedContentHeight = selectedContent.height();
+                selectedContent = eventsContent.find('[title="'+ eventDate +'"]'),
+                selectedContentHeight = 300;
+                // selectedContentHeight = selectedContent.height();
     
             if (selectedContent.index() > visibleContent.index()) {
                 var classEnetering = 'selected enter-right',
@@ -187,19 +207,19 @@ export class HorizontalTimelineComponent implements OnInit {
     
         function getTranslateValue(timeline) {
             var timelineStyle = window.getComputedStyle(timeline.get(0), null),
-                timelineTranslate = timelineStyle.getPropertyValue("-webkit-transform") ||
+                timelineTranslate: any = timelineStyle.getPropertyValue("-webkit-transform") ||
                      timelineStyle.getPropertyValue("-moz-transform") ||
                      timelineStyle.getPropertyValue("-ms-transform") ||
                      timelineStyle.getPropertyValue("-o-transform") ||
                      timelineStyle.getPropertyValue("transform");
     
             if( timelineTranslate.indexOf('(') >=0 ) {
-                var timelineTranslate = timelineTranslate.split('(')[1];
+                var timelineTranslate: any = timelineTranslate.split('(')[1];
                 timelineTranslate = timelineTranslate.split(')')[0];
                 timelineTranslate = timelineTranslate.split(',');
                 var translateValue = timelineTranslate[4];
             } else {
-                var translateValue = 0;
+                var translateValue: any = 0;
             }
     
             return Number(translateValue);
@@ -217,7 +237,7 @@ export class HorizontalTimelineComponent implements OnInit {
         function parseDate(events) {
             var dateArrays = [];
             events.each(function(){
-                var dateComp = $(this).data('date').split('/'),
+                var dateComp = $(this)[0].rel.split('/'),
                     newDate = new Date(dateComp[2], dateComp[1]-1, dateComp[0]);
                 dateArrays.push(newDate);
             });
@@ -228,16 +248,16 @@ export class HorizontalTimelineComponent implements OnInit {
             var dateArrays = [];
             events.each(function(){
                 var singleDate = $(this),
-                    dateComp = singleDate.data('date').split('T');
+                    dateComp = singleDate[0].rel.split('T');
                 if( dateComp.length > 1 ) { //both DD/MM/YEAR and time are provided
                     var dayComp = dateComp[0].split('/'),
-                        timeComp = dateComp[1].split(':');
+                        timeComp: any = dateComp[1].split(':');
                 } else if( dateComp[0].indexOf(':') >=0 ) { //only time is provide
-                    var dayComp = ["2000", "0", "0"],
+                    var dayComp: any = ["2000", "0", "0"],
                         timeComp = dateComp[0].split(':');
                 } else { //only DD/MM/YEAR
                     var dayComp = dateComp[0].split('/'),
-                        timeComp = ["0", "0"];
+                        timeComp: any = ["0", "0"];
                 }
                 var	newDate = new Date(dayComp[2], dayComp[1]-1, dayComp[0], timeComp[0], timeComp[1]);
                 dateArrays.push(newDate);

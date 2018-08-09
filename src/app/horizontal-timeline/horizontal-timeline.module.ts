@@ -1,9 +1,10 @@
 
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HorizontalTimelineComponent } from './horizontal-timeline.component';
 
 @NgModule({
-    imports: [],
+    imports: [CommonModule],
     exports: [HorizontalTimelineComponent],
     declarations: [HorizontalTimelineComponent],
     providers: []

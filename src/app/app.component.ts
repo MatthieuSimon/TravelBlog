@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as $ from 'jquery';
+import { ArticleService } from './services/article.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +7,15 @@ import * as $ from 'jquery';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'blog';
+  
+  articles: any = [];
+
+  constructor(public articleService: ArticleService) {
+    this.articleService.getArticles().subscribe(data =>{
+      this.articles = data;
+      console.log(data);
+    });
+  }
+
 }
+
