@@ -6,10 +6,12 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { HorizontalTimelineModule } from './horizontal-timeline/horizontal-timeline.module';
 import { ArticleService } from './services/article.service';
+import { GoogleMapComponent } from './google-map/google-map.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GoogleMapComponent
   ],
   imports: [
     BrowserModule,
