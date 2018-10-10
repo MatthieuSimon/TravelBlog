@@ -1,5 +1,25 @@
 <div class="container">
-  <h1>Aller simple</h1>
-  <google-map></google-map>
-  <horizontal-timeline></horizontal-timeline>
+  <h1>La belle échappée</h1>
+  <div class="menu row justify-content-md-center">
+    <div class="dropdown">
+      <button class="btn btn-secondary" type="button" id="dropdownMenu1" aria-haspopup="true" aria-expanded="false"
+        routerLink="/blog" routerLinkActive="active">
+        Blog
+      </button>
+      <button class="btn btn-secondary" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false"
+        routerLink="/qui-sommes-nous" routerLinkActive="active">
+        Qui sommes nous
+      </button>
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Préparatifs
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
+        <a routerLink="/vaccins" routerLinkActive="active" class="dropdown-item" href="#">Vaccins</a>
+        <a routerLink="/sac-a-dos" routerLinkActive="active" class="dropdown-item" href="#">Sac à dos</a>
+        <a routerLink="/to-do-list" routerLinkActive="active" class="dropdown-item" href="#">To-do list</a>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
 </div>
