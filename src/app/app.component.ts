@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ArticleService } from './services/article.service';
+import { StepService } from './services/step.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +8,11 @@ import { ArticleService } from './services/article.service';
 })
 export class AppComponent {
   
-  articles: any = [];
+  steps: any = [];
 
-  constructor(public articleService: ArticleService) {
-    this.articleService.getArticles().subscribe(data =>{
-      this.articles = data;
+  constructor(public stepService: StepService) {
+    this.stepService.getSteps().subscribe(data =>{
+      this.steps = data;
       console.log(data);
     });
   }

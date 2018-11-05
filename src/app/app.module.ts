@@ -5,7 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { HorizontalTimelineModule } from './horizontal-timeline/horizontal-timeline.module';
-import { ArticleService } from './services/article.service';
+import { StepService } from './services/step.service';
 import { GoogleMapComponent } from './google-map/google-map.component';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { GoogleMapComponent } from './google-map/google-map.component';
     HttpClientModule,
     HorizontalTimelineModule
   ],
-  providers: [ArticleService],
+  providers: [StepService],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

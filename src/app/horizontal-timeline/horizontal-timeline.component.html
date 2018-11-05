@@ -3,8 +3,8 @@
     <div class="events-wrapper">
       <div class="events">
         <ol>
-          <li *ngFor="let article of articles; let last = last">
-            <a href="#{{id}}" [class.selected]="last" rel="{{article.date}}">{{ article.date | date:'d MMM'}}</a>
+          <li *ngFor="let step of steps; let last = last">
+            <a href="#{{id}}" [class.selected]="last" rel="{{step.date}}">{{ step.date | date:'d MMM'}}</a>
           </li>
           <!--
 					<li><a href="#0" data-date="16/01/2018" class="selected">16 Jan</a></li>
@@ -42,11 +42,11 @@
   <div class="events-content">
     <ol>
 
-      <li *ngFor="let article of articles; let last = last" [class.selected]="last" title="{{article.date}}">
-        <h2>{{article.place.title}}</h2>
-        <h3>{{article.country}}</h3>
-        <em>{{article.date}}</em>
-        <p>{{article.textHTML}}</p>
+      <li *ngFor="let step of steps; let last = last" [class.selected]="last" title="{{step.date}}">
+        <h2>{{step.place.title}}</h2>
+        <h3>{{step.country}}</h3>
+        <em>{{step.date}}</em>
+        <p>{{step.textHTML}}</p>
       </li>
 
       <!--

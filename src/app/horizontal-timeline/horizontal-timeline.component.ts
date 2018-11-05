@@ -1,6 +1,6 @@
 
 import { Component, OnInit  } from '@angular/core';
-import { ArticleService } from '../services/article.service';
+import { StepService } from '../services/step.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -10,12 +10,12 @@ import * as $ from 'jquery';
 })
 export class HorizontalTimelineComponent implements OnInit {
 
-    articles: any = [];
+    steps: any = [];
     dates: any = [];
 
-    constructor(public articleService: ArticleService) {
-      this.articleService.getArticles().subscribe((data: any[]) =>{
-        this.articles = data;
+    constructor(public stepService: StepService) {
+      this.stepService.getSteps().subscribe((data: any[]) =>{
+        this.steps = data;
         console.log(data);
         this.dates = data.map((d) => d.date);
       });
