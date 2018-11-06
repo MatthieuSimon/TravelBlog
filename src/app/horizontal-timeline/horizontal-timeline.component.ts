@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { StepService } from "../services/step.service";
 import * as $ from "jquery";
 
@@ -13,11 +13,18 @@ export class HorizontalTimelineComponent implements OnInit {
 
   constructor(public stepService: StepService) {}
 
+  @Input('selectedMarker') selectedMarker;
+  ngOnChanges() {
+    console.log('selectedMarker input arrived', this.selectedMarker);
+    let id: string = 'a#' + this.selectedMarker;
+    $(document).ready(function($) {
+      $(id).trigger( "click" );
+    });
+  }
+
   public ngOnInit() {
     this.stepService.getSteps().subscribe((data: any[]) => {
       this.steps = data;
-      console.log("from json");
-      console.log(data);
       this.dates = data.map(d => d.date);
       $(document).ready(function($) {
         var timelines = $(".cd-horizontal-timeline"),

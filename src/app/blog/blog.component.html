@@ -1,2 +1,2 @@
-<google-map></google-map>
-<horizontal-timeline></horizontal-timeline>
+<google-map (selectedMarker)="getSelectedMarker($event)" ></google-map>
+<horizontal-timeline [selectedMarker]="selectedMarker"></horizontal-timeline>

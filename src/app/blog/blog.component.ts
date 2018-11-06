@@ -8,5 +8,10 @@ import { StepService } from "../services/step.service";
 })
 export class BlogComponent {
 
+  selectedMarker:string;
+  getSelectedMarker(event){
+    this.selectedMarker = event;
+  }
+
   constructor(public stepService: StepService) {}
 }
