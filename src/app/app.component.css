@@ -1,57 +1,72 @@
 h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3em;
-    text-align: center;
-    padding-top: 50px;
+  font-family: "Dancing Script", cursive;
+  font-size: 3em;
+  text-align: center;
+  padding-top: 50px;
 }
 
 /* MENU */
 
-.dropdown>button, .dropdown>a {
-    color: #777;
-    background-color: transparent;
-    border: none;
-    cursor: auto;
-    font-weight: 300;
-    font-family: 'Source Sans Pro', sans-serif;
+.dropdown > button,
+.dropdown > a {
+  color: #777;
+  background-color: transparent;
+  border: none;
+  cursor: auto;
+  font-weight: 300;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 a {
-    color: #777;
-    font-weight: 300;
-    font-family: 'Source Sans Pro', sans-serif;
+  color: #777;
+  font-weight: 300;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
-p, .step-text {
-    font-size: 16px;
-    color: #444;
+p,
+.step-text {
+  font-size: 16px;
+  color: #444;
 }
 
 .menu {
-    padding-bottom: 50px;
-    color: #777;
+  padding-bottom: 50px;
+  color: #777;
 }
 
 .dropdown-menu {
-    border: none;
+  border: none;
 }
 
-.btn.btn-secondary.active, .dropdown-toggle, .dropdown-item.active, .dropdown-item:active {
-    background: none;
-    color:#777;
+.btn.btn-secondary.active,
+.dropdown-toggle,
+.dropdown-item.active,
+.dropdown-item:active {
+  background: none;
+  color: #777;
 }
 
 .dropdown.show {
-    border: none;
-    box-shadow: none;
+  border: none;
+  box-shadow: none;
 }
 
 .dropdown-toggle::after {
-    display:none;
+  display: none;
 }
 
-.btn-secondary:not(:disabled):not(.disabled).active:focus, .btn-secondary:not(:disabled):not(.disabled):active:focus, .show>.btn-secondary.dropdown-toggle:focus,
-.btn-secondary.dropdown-toggle:focus,.btn-secondary.dropdown-toggle:active {
-    box-shadow: none;
+.btn-secondary:not(:disabled):not(.disabled).active:focus,
+.btn-secondary:not(:disabled):not(.disabled):active:focus,
+.show > .btn-secondary.dropdown-toggle:focus,
+.btn-secondary.dropdown-toggle:focus,
+.btn-secondary.dropdown-toggle:active {
+  box-shadow: none;
 }
 
+img.image {
+  width: 400px !important;
+}
+
+body {
+  background-color: #ddd;
+}

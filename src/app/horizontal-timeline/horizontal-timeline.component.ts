@@ -28,7 +28,7 @@ export class HorizontalTimelineComponent implements OnInit {
       this.dates = data.map(d => d.date);
       $(document).ready(function($) {
         var timelines = $(".cd-horizontal-timeline"),
-          eventsMinDistance = 60;
+          eventsMinDistance = 200;
 
         timelines.length > 0 && initTimeline(timelines);
 
@@ -178,8 +178,8 @@ export class HorizontalTimelineComponent implements OnInit {
 
         function setDatePosition(timelineComponents, min) {
           for (var i = 0; i < timelineComponents["timelineDates"].length; i++) {
-            var distance = daydiff(timelineComponents["timelineDates"][0], timelineComponents["timelineDates"][i]),
-              distanceNorm = Math.round(distance / timelineComponents["eventsMinLapse"]) + 2;
+            var distance = daydiff(timelineComponents["timelineDates"][0], timelineComponents["timelineDates"][i]);
+            var distanceNorm = (distance / timelineComponents["eventsMinLapse"]);
             timelineComponents["timelineEvents"].eq(i).css("left", distanceNorm * min + "px");
           }
         }
@@ -192,8 +192,8 @@ export class HorizontalTimelineComponent implements OnInit {
             ),
             timeSpanNorm = timeSpan / timelineComponents["eventsMinLapse"],
             timeSpanNorm = Math.round(timeSpanNorm) + 4,
-            // totalWidth = timeSpanNorm*width;
-            totalWidth = 800;
+            totalWidth = timeSpanNorm*width;
+            // totalWidth = 800;
           timelineComponents["eventsWrapper"].css("width", totalWidth + "px");
           updateFilling(
             timelineComponents["timelineEvents"].eq(last - 1),
