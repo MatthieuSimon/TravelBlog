@@ -3,6 +3,12 @@ h1 {
   font-size: 3em;
   text-align: center;
   padding-top: 50px;
+  padding-right: 20px;
+}
+
+h2 {
+  font-size: 1em;
+  text-align: center;
 }
 
 /* MENU */
@@ -67,6 +73,3 @@ img.image {
   width: 400px !important;
 }
 
-body {
-  background-color: #ddd;
-}

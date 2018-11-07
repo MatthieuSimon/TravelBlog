@@ -28,7 +28,7 @@ export class HorizontalTimelineComponent implements OnInit {
       this.dates = data.map(d => d.date);
       $(document).ready(function($) {
         var timelines = $(".cd-horizontal-timeline"),
-          eventsMinDistance = 200;
+          eventsMinDistance = 250;
 
         timelines.length > 0 && initTimeline(timelines);
 
@@ -179,9 +179,22 @@ export class HorizontalTimelineComponent implements OnInit {
         function setDatePosition(timelineComponents, min) {
           for (var i = 0; i < timelineComponents["timelineDates"].length; i++) {
             var distance = daydiff(timelineComponents["timelineDates"][0], timelineComponents["timelineDates"][i]);
-            var distanceNorm = (distance / timelineComponents["eventsMinLapse"]);
+            var distanceNorm = (distance / timelineComponents["eventsMinLapse"] + 1);
             timelineComponents["timelineEvents"].eq(i).css("left", distanceNorm * min + "px");
           }
+
+          for (var i = 0; i < timelineComponents["timelineDates"].length; i++) {
+            var date = timelineComponents["timelineDates"][i];
+            var dateString = getDateString(date);
+            timelineComponents["timelineEvents"].eq(i).text(dateString);
+          }
+        }
+
+        function getDateString(date: Date) {
+          var d = new Date(date);
+          var options = { month: 'short', day: 'numeric' };
+          console.log(d.toLocaleDateString('fr-FR', options));
+          return d.toLocaleDateString('fr-FR', options);
         }
 
         function setTimelineWidth(timelineComponents, width) {

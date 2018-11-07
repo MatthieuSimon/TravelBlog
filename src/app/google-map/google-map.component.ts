@@ -12,8 +12,8 @@ declare const google: any;
 export class GoogleMapComponent implements OnInit {
   private mapType: string = "ROADMAP";
   private mapOptions: any = {
-    center: new google.maps.LatLng(35.704629, 61.13364),
-    zoom: 3,
+    center: new google.maps.LatLng(14.360860, 109.759223),
+    zoom: 5,
     mapTypeControl: true,
     styles: [
       {
@@ -270,7 +270,7 @@ export class GoogleMapComponent implements OnInit {
 
   private onMarkerClick(marker) {
     console.log(marker);
-    marker.setAnimation(google.maps.Animation.BOUNCE);
+    // marker.setAnimation(google.maps.Animation.BOUNCE);
     this.selectedMarker.emit(marker.title);
   }
 }

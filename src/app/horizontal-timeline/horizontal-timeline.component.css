@@ -190,7 +190,7 @@ Main Components
 }
 @media only screen and (min-width: 1100px) {
   .cd-horizontal-timeline {
-    margin: 6em auto;
+    margin: 2em auto;
   }
   .cd-horizontal-timeline::before {
     /* never visible - this is used in jQuery to check the current MQ */
@@ -267,11 +267,16 @@ Main Components
   position: relative;
   width: 100%;
   margin: 2em 0;
-  overflow: hidden;
+  overflow: scroll;
   -webkit-transition: height 0.4s;
   -moz-transition: height 0.4s;
   transition: height 0.4s;
-  background-color: white !important;
+  background-color: white;
+  padding-top: 50px;
+  border: 1px solid #EDEDED;
+  margin: 0 auto;
+  box-shadow: 1px 1px 8px #888;
+  min-height: 800px;
 }
 .cd-horizontal-timeline .events-content li {
   position: absolute;
