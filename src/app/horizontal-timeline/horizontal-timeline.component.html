@@ -1,44 +1,38 @@
 <section class="cd-horizontal-timeline">
-	<div class="timeline">
-		<div class="events-wrapper">
-			<div class="events">
-				<ol>
-					<li *ngFor="let step of steps; let last = last">
-						<a href="#{{id}}" id="{{step.id}}" [class.selected]="last" rel="{{step.date}}">{{ step.date }}</a>
-					</li>
-				</ol>
+  <div class="timeline">
+    <div class="events-wrapper">
+      <div class="events">
+        <ol>
+          <li *ngFor="let step of steps; let last = last">
+            <a href="#{{id}}" id="{{step.id}}" [class.selected]="last" rel="{{step.date}}">{{ step.date }}</a>
+          </li>
+        </ol>
 
-				<span class="filling-line" aria-hidden="true"></span>
-			</div>
-			<!-- .events -->
-		</div>
-		<!-- .events-wrapper -->
+        <span class="filling-line" aria-hidden="true"></span>
+      </div>
+      <!-- .events -->
+    </div>
+    <!-- .events-wrapper -->
 
-		<ul class="cd-timeline-navigation">
-			<li>
-				<a href="#0" class="prev inactive">Prev</a>
-			</li>
-			<li>
-				<a href="#0" class="next">Next</a>
-			</li>
-		</ul>
-		<!-- .cd-timeline-navigation -->
-	</div>
-	<!-- .timeline -->
+    <ul class="cd-timeline-navigation">
+      <li><a href="#0" class="prev inactive">Prev</a></li>
+      <li><a href="#0" class="next">Next</a></li>
+    </ul>
+    <!-- .cd-timeline-navigation -->
+  </div>
+  <!-- .timeline -->
 
-	<div class="events-content">
-		<ol>
-
-			<span *ngFor="let step of steps; let last = last">
-				<li id="03" [class.selected]="last" title="{{step.date}}">
-					<h2>{{step.place.title}}</h2>
-					<h3>{{step.country}}</h3>
-					<em>{{step.date}}</em>
-					<p [innerHtml]="step.textHTML"></p>
-				</li>
-			</span>
-
-		</ol>
-	</div>
-	<!-- .events-content -->
+  <div class="events-content">
+    <ol>
+      <span *ngFor="let step of steps; let last = last">
+        <li id="03" [class.selected]="last" title="{{step.date}}">
+          <h2>{{ step.place.title }}</h2>
+          <h3>{{ step.country }}</h3>
+          <h4>{{ step.date }}</h4>
+          <p [innerHtml]="step.textHTML"></p>
+        </li>
+      </span>
+    </ol>
+  </div>
+  <!-- .events-content -->
 </section>

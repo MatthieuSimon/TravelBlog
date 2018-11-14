@@ -2,7 +2,7 @@ h2 {
     font-family: 'Dancing Script', cursive;
     font-size: 2em;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 img {
@@ -15,10 +15,28 @@ img {
 .container {
     padding-left: 200px;
     padding-right: 200px;
+    height: 100%;
+}
+
+p, li, h3 {
+    font-family: 'Nunito', sans-serif;
 }
 
 p {
+    padding-top: 10px;
+    text-align: justify;
+}
+
+p, li {
     font-size: 1em;
-    font-family: 'Source Sans Pro', sans-serif;
-    padding-top: 20px;
+}
+
+h3 {
+    font-weight: 600;
+    font-size: 1em;
+    text-align: center;
+}
+
+.center {
+    text-align: center;
 }
