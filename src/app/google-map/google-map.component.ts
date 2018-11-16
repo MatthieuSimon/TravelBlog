@@ -243,7 +243,6 @@ export class GoogleMapComponent implements OnInit {
 
   ngOnInit() {
     this.mapOptions.mapTypeId = google.maps.MapTypeId[this.mapType];
-    this.mapOptions.zoomControl = false;
     this.mapOptions.mapTypeControl = false;
     this.mapOptions.streetViewControl = false,
     this.mapInstance = new google.maps.Map(this.mapElement.nativeElement, this.mapOptions);
