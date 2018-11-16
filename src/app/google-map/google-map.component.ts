@@ -242,14 +242,12 @@ export class GoogleMapComponent implements OnInit {
   constructor(public stepService: StepService) {}
 
   ngOnInit() {
-    console.log("init GoogleMapComponent");
     this.mapOptions.mapTypeId = google.maps.MapTypeId[this.mapType];
     this.mapOptions.zoomControl = false;
     this.mapOptions.mapTypeControl = false;
     this.mapOptions.streetViewControl = false,
     this.mapInstance = new google.maps.Map(this.mapElement.nativeElement, this.mapOptions);
     this.addMarkers();
-    console.log(this.mapInstance);
   }
 
   private addMarkers() {
@@ -269,7 +267,6 @@ export class GoogleMapComponent implements OnInit {
   }
 
   private onMarkerClick(marker) {
-    console.log(marker);
     // marker.setAnimation(google.maps.Animation.BOUNCE);
     this.selectedMarker.emit(marker.title);
   }
