@@ -13,7 +13,6 @@ export class AppComponent {
   constructor(public stepService: StepService) {
     this.stepService.getSteps().subscribe(data =>{
       this.steps = data;
-      console.log(data);
     });
   }
 
