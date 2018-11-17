@@ -15,7 +15,6 @@ export class HorizontalTimelineComponent implements OnInit {
 
   @Input('selectedMarker') selectedMarker;
   ngOnChanges() {
-    console.log('selectedMarker input arrived', this.selectedMarker);
     let id: string = 'a#' + this.selectedMarker;
     $(document).ready(function($) {
       $(id).trigger( "click" );
@@ -193,7 +192,6 @@ export class HorizontalTimelineComponent implements OnInit {
         function getDateString(date: Date) {
           var d = new Date(date);
           var options = { month: 'short', day: 'numeric' };
-          console.log(d.toLocaleDateString('fr-FR', options));
           return d.toLocaleDateString('fr-FR', options);
         }
 
