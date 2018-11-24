@@ -261,8 +261,29 @@ export class GoogleMapComponent implements OnInit {
         marker.addListener("click", () => {
           this.onMarkerClick(marker);
         });
+        this.buildPath(step);
       }
     });
+  }
+
+  private buildPath(step) {
+    let flightPlanCoordinates = step.path.length > 0 ? step.path : [];
+    let drawPath = new google.maps.Polyline({
+      path: flightPlanCoordinates,
+      geodesic: true,
+      strokeOpacity: 0,
+        icons: [{
+          icon: {
+            path: 'M 0,-1 0,1',
+            strokeOpacity: 1,
+            scale: 4
+          },
+          offset: '0',
+          repeat: '20px'
+        }]
+    });
+
+    drawPath.setMap(this.mapInstance);
   }
 
   private onMarkerClick(marker) {
